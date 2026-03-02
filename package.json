@@ -1,21 +1,38 @@
-{
+﻿{
   "name": "@rollpost/contract",
-  "version": "0.1.0",
+  "version": "0.1.1",
+  "description": "Rollpost canonical DTOs + Zod schemas (no runtime logic, no DB knowledge).",
   "private": false,
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "type": "module",
+  "sideEffects": false,
+  "files": ["dist"],
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./common": {
+      "types": "./dist/common/index.d.ts",
+      "import": "./dist/common/index.js",
+      "require": "./dist/common/index.cjs"
+    },
+    "./health": {
+      "types": "./dist/health/index.d.ts",
+      "import": "./dist/health/index.js",
+      "require": "./dist/health/index.cjs"
+    }
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Rollpost/rollpost-Shared-Contract-Package.git"
-  },
-  "keywords": [],
-  "author": "",
+  "publishConfig": { "registry": "https://npm.pkg.github.com" },
   "license": "ISC",
-  "type": "commonjs",
-  "bugs": {
-    "url": "https://github.com/Rollpost/rollpost-Shared-Contract-Package/issues"
+  "scripts": {
+    "build": "tsup src/index.ts --format esm,cjs --dts --sourcemap --clean",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "echo \"(tests not set up yet)\""
   },
-  "homepage": "https://github.com/Rollpost/rollpost-Shared-Contract-Package#readme"
+  "dependencies": { "zod": "^3.25.0" },
+  "devDependencies": { "tsup": "^8.0.0", "typescript": "^5.6.0" }
 }

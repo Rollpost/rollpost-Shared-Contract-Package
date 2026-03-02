@@ -1,1 +1,2 @@
-export type Healthcheck = { ok: true }
+﻿export * as common from "./common";
+export * as health from "./health";
