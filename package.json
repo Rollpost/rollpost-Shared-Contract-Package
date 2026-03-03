@@ -5,7 +5,9 @@
   "private": false,
   "type": "module",
   "sideEffects": false,
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -26,13 +28,20 @@
       "require": "./dist/health/index.cjs"
     }
   },
-  "publishConfig": { "registry": "https://npm.pkg.github.com" },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
   "license": "ISC",
   "scripts": {
-    "build": "tsup src/index.ts --format esm,cjs --dts --sourcemap --clean",
+    "build": "tsup src/index.ts src/health/index.ts src/common/index.ts --format esm,cjs --dts --sourcemap --clean",
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "test": "echo \"(tests not set up yet)\""
   },
-  "dependencies": { "zod": "^3.25.0" },
-  "devDependencies": { "tsup": "^8.0.0", "typescript": "^5.6.0" }
+  "dependencies": {
+    "zod": "^3.25.0"
+  },
+  "devDependencies": {
+    "tsup": "^8.0.0",
+    "typescript": "^5.6.0"
+  }
 }
