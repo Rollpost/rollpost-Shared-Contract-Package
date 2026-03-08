@@ -22,6 +22,8 @@ jobs:
           scope: "@rollpost"
       - name: Install
         run: npm install
+      - name: Fix permissions
+        run: chmod +x node_modules/.bin/tsup
       - name: Build
         run: npm run build
       - name: Publish
