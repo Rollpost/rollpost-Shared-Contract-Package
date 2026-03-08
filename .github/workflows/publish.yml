@@ -21,11 +21,9 @@ jobs:
           registry-url: https://npm.pkg.github.com
           scope: "@rollpost"
       - name: Install
-        run: npm install
-      - name: Fix permissions
-        run: chmod +x node_modules/.bin/tsup
+        run: npm ci
       - name: Build
-        run: npm run build
+        run: ./node_modules/.bin/tsup src/index.ts src/health/index.ts src/common/index.ts --format esm,cjs --dts --sourcemap --clean
       - name: Publish
         run: npm publish --access public
         env:
